@@ -60,10 +60,9 @@ SECRET_KEY = env.str('DJANGO_SECRET_KEY', default=None)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = env.bool('DJANGO_DEBUG', default=False)
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=[])
-ALLOWED_HOSTS = ['webhooks.local.overhang.io', 'local.overhang.io', 'local.overhang.io:8090']
 
 hostname = platform.node().split(".")[0]
 syslog_address = '/var/run/syslog' if platform.system().lower() == 'darwin' else '/dev/log'  # noqa: E501
@@ -145,6 +144,7 @@ if enable_syslog:
 # DEBUG = True overrides this, and is equivalent to setting the
 # DJANGO_ALLOWED_HOSTS envar to "localhost,127.0.0.1,[::1]".
 ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default="")
+ALLOWED_HOSTS = ['webhooks.local.overhang.io', 'local.overhang.io', 'local.overhang.io:8090']
 
 # Async task processing via Celery
 CELERY_BROKER_URL = env.str('DJANGO_CELERY_BROKER_URL', default="")
