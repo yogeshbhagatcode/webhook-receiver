@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 
 
 def record_order(data):
-    import pdb; pdb.set_trace()
+    # import pdb; pdb.set_trace()
     return Order.objects.get_or_create(
         id=data.content['id'],
         defaults={
