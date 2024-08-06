@@ -24,6 +24,7 @@ def order_create(request):
     # Load configuration
     # import pdb; pdb.set_trace()
     conf = settings.WEBHOOK_RECEIVER_SETTINGS['shopify']
+    print("conf: ", conf)
 
     try:
         data = receive_json_webhook(request)
@@ -32,6 +33,7 @@ def order_create(request):
 
     try:
         shop_domain = data.headers['X-Shopify-Shop-Domain']
+        print("shop_domain: ", shop_domain)
     except KeyError:
         logger.error('Request is missing X-Shopify-Shop-Domain header')
         fail_and_save(data)
