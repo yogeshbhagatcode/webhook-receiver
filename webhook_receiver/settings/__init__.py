@@ -62,7 +62,8 @@ SECRET_KEY = env.str('DJANGO_SECRET_KEY', default=None)
 # DEBUG = env.bool('DJANGO_DEBUG', default=False)
 DEBUG = False
 
-ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=[])
+# ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=[])
+ALLOWED_HOSTS = ["local.overhang.io"]
 
 hostname = platform.node().split(".")[0]
 syslog_address = '/var/run/syslog' if platform.system().lower() == 'darwin' else '/dev/log'  # noqa: E501
