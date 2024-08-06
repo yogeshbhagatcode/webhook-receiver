@@ -59,7 +59,8 @@ ROOT_URLCONF = 'webhook_receiver.urls'
 SECRET_KEY = env.str('DJANGO_SECRET_KEY', default=None)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool('DJANGO_DEBUG', default=False)
+# DEBUG = env.bool('DJANGO_DEBUG', default=False)
+DEBUG = True
 
 ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=[])
 
@@ -168,8 +169,15 @@ if not default_db:
 # want to use them.  But if it doesn't, we still want to set OPTIONS
 # to an empty dictionary, which django-environ doesn't do by default.
 default_db.setdefault('OPTIONS', {})
+# DATABASES = {
+#     'default': default_db,
+# }
+
 DATABASES = {
-    'default': default_db,
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR + "/db.sqlite3",
+    }
 }
 
 CACHES = {

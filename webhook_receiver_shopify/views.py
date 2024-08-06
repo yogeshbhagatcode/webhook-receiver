@@ -22,6 +22,7 @@ logger = logging.getLogger(__name__)
 @require_POST
 def order_create(request):
     # Load configuration
+    import pdb; pdb.set_trace()
     conf = settings.WEBHOOK_RECEIVER_SETTINGS['shopify']
 
     try:
