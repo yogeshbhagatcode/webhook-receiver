@@ -169,15 +169,8 @@ if not default_db:
 # want to use them.  But if it doesn't, we still want to set OPTIONS
 # to an empty dictionary, which django-environ doesn't do by default.
 default_db.setdefault('OPTIONS', {})
-# DATABASES = {
-#     'default': default_db,
-# }
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR + "/db.sqlite3",
-    }
+    'default': default_db,
 }
 
 CACHES = {
