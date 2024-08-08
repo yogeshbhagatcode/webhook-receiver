@@ -60,7 +60,7 @@ SECRET_KEY = env.str('DJANGO_SECRET_KEY', default=None)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = env.bool('DJANGO_DEBUG', default=False)
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=[])
 
