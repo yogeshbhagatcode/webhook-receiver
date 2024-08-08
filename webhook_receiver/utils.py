@@ -145,12 +145,17 @@ def enroll_in_course(
 
     # Raises ValidationError if invalid
     validate_email(email)
+    print("WEBHOOK_RECEIVER_LMS_BASE_URL: ", settings.WEBHOOK_RECEIVER_LMS_BASE_URL)
+    print("WEBHOOK_RECEIVER_EDX_OAUTH2_KEY: ", settings.WEBHOOK_RECEIVER_EDX_OAUTH2_KEY)
+    print("WEBHOOK_RECEIVER_EDX_OAUTH2_SECRET: ", settings.WEBHOOK_RECEIVER_EDX_OAUTH2_SECRET)
 
     client = OAuthAPIClient(
         settings.WEBHOOK_RECEIVER_LMS_BASE_URL,
         settings.WEBHOOK_RECEIVER_EDX_OAUTH2_KEY,
         settings.WEBHOOK_RECEIVER_EDX_OAUTH2_SECRET,
     )
+
+    print("client: ", client)
 
     bulk_enroll_url = EDX_BULK_ENROLLMENT_API_PATH % settings.WEBHOOK_RECEIVER_LMS_BASE_URL  # noqa: E501
 
